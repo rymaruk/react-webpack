@@ -35,7 +35,17 @@ module.exports = {
         exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
+          use: [
+            { loader: 'css-loader' },
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: loader => [
+                  require('autoprefixer'),
+                ]
+              }
+            },
+            {loader: 'sass-loader'}]
         })
       }
     ]
@@ -46,15 +56,19 @@ module.exports = {
   },
 
   plugins: [
+
     new CleanWebpackPlugin(['/dist']),
+
     new ExtractTextPlugin({
       filename: "css/styles.css",
     }),
+
     new HtmlWebpackPlugin({
       template: "./src/index.html",
       filename: "index.html",
       path: path.resolve(__dirname, '')
     })
+
   ],
 
   devServer: {
