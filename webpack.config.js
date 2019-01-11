@@ -11,7 +11,7 @@ module.exports = {
 
   entry: {
     js: [
-      'babel-polyfill',
+      "@babel/polyfill",
       path.resolve(__dirname, "./src/index.js"),
       ...glob.sync("./src/**/*.s*ss")
     ]
