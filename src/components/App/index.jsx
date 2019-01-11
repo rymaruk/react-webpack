@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button } from "../../elements";
 
 export class App extends Component {
 
@@ -23,8 +24,15 @@ export class App extends Component {
 
     render() {
         return (
-            <div>
-                <h1>My React App!</h1>
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-12">
+                        <h3>Elements</h3>
+                    </div>
+                    <div className="col-12">
+                        <Button title="Some button" type="Button" className="btn-primary" />
+                    </div>
+                </div>
             </div>
         );
     }
